@@ -9,7 +9,13 @@ class Day extends React.Component {
     super(props);
   }
 
-  render() {}
+  render() {
+    if (this.props.month === null) {
+      return <div className="filler-date">I'm not a real date</div>;
+    } else {
+      return <div className="real-dates">{this.props.number}</div>;
+    }
+  }
 }
 
 export default Day;

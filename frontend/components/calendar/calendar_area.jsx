@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import DayContainer from "./day_container";
+import DayContainer from "../day/day_container";
 
 const DAYS = {
   January: 31,
@@ -72,12 +72,23 @@ class CalendarArea extends React.Component {
     let firstDate = this.state.date.date(1);
     let firstDay = daysOfTheWeek[firstDate.day()];
     const days = [];
-    for (let i = 0; i < firstDay; i++) {
-      days.push(<Day />);
+
+    for (let i = 0; i < daysOfTheWeek.indexOf(firstDay); i++) {
+      days.push(
+        <DayContainer month="null" date={null} number="filler" key={i + 100} />
+      );
     }
-    for (let i = 1; i < numberOfDays; i++) {
-      days.push(<Day />);
+    for (let i = 1; i <= numberOfDays; i++) {
+      days.push(
+        <DayContainer
+          month={this.state.month}
+          date={this.state.date.date(i)}
+          key={i}
+          number={i}
+        />
+      );
     }
+    debugger;
     return days;
   }
 
@@ -94,7 +105,7 @@ class CalendarArea extends React.Component {
         </button>
 
         {this.renderDaysHeader()}
-        <div>{this.renderDays()}</div>
+        <div className="days-container-div">{this.renderDays()}</div>
       </div>
     );
   }
