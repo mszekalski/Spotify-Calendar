@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import CalendarArea from "./calendar_area";
+import Day from "./day";
 import {
   fetchEvent,
   receiveEvent,
@@ -9,21 +9,14 @@ import { values } from "lodash";
 import moment from "moment";
 
 const mapStateToProps = state => {
-  const currentDate = moment();
-  return {
-    currentDate: currentDate
-  };
+  return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    fetchAllEvents: () => dispatch(fetchAllEvents()),
-    fetchEvent: id => dispatch(fetchEvent(id)),
-    receiveEvent: channel => dispatch(receiveEvent(channel))
-  };
+  return {};
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CalendarArea);
+)(Day);
