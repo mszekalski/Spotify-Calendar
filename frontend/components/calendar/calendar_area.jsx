@@ -38,7 +38,7 @@ class CalendarArea extends React.Component {
 
   renderDaysHeader() {
     return (
-      <div className="week names">
+      <div className="week-names">
         <span className="day">Sun</span>
         <span className="day">Mon</span>
         <span className="day">Tue</span>
@@ -63,7 +63,7 @@ class CalendarArea extends React.Component {
   }
 
   renderMonth() {
-    return <span>{this.state.date.format("MMMM")}</span>;
+    return <span>{this.state.date.format("MMMM, YYYY")}</span>;
   }
 
   renderDays() {
@@ -74,9 +74,7 @@ class CalendarArea extends React.Component {
     const days = [];
 
     for (let i = 0; i < daysOfTheWeek.indexOf(firstDay); i++) {
-      days.push(
-        <DayContainer month="null" date={null} number="filler" key={i + 100} />
-      );
+      days.push(<DayContainer month="null" key={i + 100} />);
     }
     for (let i = 1; i <= numberOfDays; i++) {
       days.push(
@@ -88,24 +86,28 @@ class CalendarArea extends React.Component {
         />
       );
     }
-    debugger;
+
     return days;
   }
 
   render() {
     return (
       <div className="calendar-container">
-        <button onClick={this.prevMonth}>
-          <i className="fa fa-angle-left" />
-        </button>
+        <div className="month-header">
+          <div className="month-header-inner">
+            <button onClick={this.prevMonth}>
+              <i className="fa fa-angle-left" />
+            </button>
 
-        {this.renderMonth()}
-        <button onClick={this.nextMonth}>
-          <i className="fa fa-angle-right" />
-        </button>
-
+            {this.renderMonth()}
+            <button onClick={this.nextMonth}>
+              <i className="fa fa-angle-right" />
+            </button>
+          </div>
+        </div>
         {this.renderDaysHeader()}
-        <div className="days-container-div">{this.renderDays()}</div>
+
+        <div className="days-container-inner">{this.renderDays()}</div>
       </div>
     );
   }
