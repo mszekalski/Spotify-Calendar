@@ -38,6 +38,15 @@ class Day extends React.Component {
               {end}
             </div>
             <div className="event-description">{event.description}</div>
+            <button
+              className="delete-button"
+              onClick={e => {
+                e.stopPropagation();
+                this.props.deleteEvent(event.id);
+              }}
+            >
+              X
+            </button>
           </div>
         </li>
       );
@@ -61,10 +70,3 @@ class Day extends React.Component {
 }
 
 export default Day;
-
-// <button
-//   className="delete-button"
-//   onClick={() => this.props.deleteEvent(event.id)}
-//   >
-//   X
-// </button>
