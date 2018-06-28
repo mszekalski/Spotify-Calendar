@@ -14,18 +14,41 @@ class Day extends React.Component {
     this.props.onClickChange(this.props.date);
   }
 
+  renderEvents() {
+    let date = this.props.date.format("YYYY-MM-DD");
+    const events = this.props.events.filter(event => {
+      return event.start_date === date;
+    });
+
+    return events.map(event => {
+      let start = moment(event.start_time, "YYYY-MM-DD HH:mm").format(
+        "hh:mm a"
+      );
+      let end = moment(event.end_time, "YYYY-MM-DD HH:mm").format("hh:mm a");
+      return (
+        <li key={event.id} className="event-list-item">
+          <div className="event-content-div">
+            <div className="event-duration">
+              {start} -
+              {end}
+            </div>
+            <div className="event-description">{event.description}</div>
+          </div>
+        </li>
+      );
+    });
+  }
+
   render() {
     if (this.props.month === "null") {
       return <div className="filler-date" />;
     } else {
-      let date = this.props.date.format("YYYY-MM-DD");
-      const events = this.props.events.filter(event => {
-        return event.start_date === date;
-      });
-
       return (
         <div className="real-dates" onClick={this.handleChange}>
           {this.props.number}
+          <div className="events-list-div">
+            <ul className="events-list">{this.renderEvents()}</ul>
+          </div>
         </div>
       );
     }

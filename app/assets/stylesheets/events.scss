@@ -8,4 +8,34 @@
   margin-right: auto;
   width: 90%;
   display: -webkit-flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.event-list-item {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.event-content-div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.events-list-div {
+}
+
+.event-duration {
+  font-size: 75%;
+}
+
+.real-dates {
+  overflow-y: hidden;
+  overflow: scroll;
 }

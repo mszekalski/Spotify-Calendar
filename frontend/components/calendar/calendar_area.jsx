@@ -11,12 +11,14 @@ class CalendarArea extends React.Component {
     super(props);
     this.state = {
       date: this.props.date,
-      month: null
+      month: null,
+      hidden: true
     };
 
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +58,11 @@ class CalendarArea extends React.Component {
   }
 
   onDateChange(date) {
-    this.setState({ date });
+    this.setState({ date, hidden: false });
+  }
+
+  onFormSubmit() {
+    this.setState({ hidden: true });
   }
 
   renderDays() {
@@ -77,6 +83,7 @@ class CalendarArea extends React.Component {
           key={i}
           number={i}
           date={date}
+          onClick={this.showForm}
         />
       );
     }
@@ -102,7 +109,12 @@ class CalendarArea extends React.Component {
         {this.renderDaysHeader()}
 
         <div className="days-container-inner">{this.renderDays()}</div>
-        <EventFormContainer date={this.state.date} />
+
+        <EventFormContainer
+          hidden={this.state.hidden}
+          date={this.state.date}
+          onClickChange={this.onFormSubmit}
+        />
       </div>
     );
   }
