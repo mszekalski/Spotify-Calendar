@@ -20,11 +20,16 @@ class Day extends React.Component {
       return event.start_date === date;
     });
 
+    events.sort((a, b) => {
+      let aStart = moment(a.start_time, "YYYY-MM-DD HH:mm").format("HHmm");
+      let bStart = moment(b.start_time, "YYYY-MM-DD HH:mm").format("HHmm");
+
+      return parseInt(aStart) - parseInt(bStart);
+    });
+
     return events.map(event => {
-      let start = moment(event.start_time, "YYYY-MM-DD HH:mm").format(
-        "hh:mm a"
-      );
-      let end = moment(event.end_time, "YYYY-MM-DD HH:mm").format("hh:mm a");
+      let start = moment(event.start_time, "YYYY-MM-DD HH:mm").format("h:mm a");
+      let end = moment(event.end_time, "YYYY-MM-DD HH:mm").format("h:mm a");
       return (
         <li key={event.id} className="event-list-item">
           <div className="event-content-div">

@@ -34,13 +34,13 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onClickChange();
     this.props.createEvent(this.state).then(() => {
       this.setState({
         start_time: "",
         end_time: "",
-        descritpion: ""
+        description: ""
       });
+      this.props.onClickChange();
     });
   }
 
