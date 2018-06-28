@@ -9,7 +9,9 @@ import { values } from "lodash";
 import moment from "moment";
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    events: Object.values(state.events)
+  };
 };
 
 const mapDispatchToProps = dispatch => {

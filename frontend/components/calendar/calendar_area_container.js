@@ -3,7 +3,7 @@ import CalendarArea from "./calendar_area";
 import {
   fetchEvent,
   receiveEvent,
-  fetchAllEvents
+  fetchEvents
 } from "../../actions/event_actions";
 import { values } from "lodash";
 import moment from "moment";
@@ -11,13 +11,14 @@ import moment from "moment";
 const mapStateToProps = state => {
   const currentDate = moment();
   return {
-    currentDate: currentDate
+    currentDate: currentDate,
+    events: state.events
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllEvents: () => dispatch(fetchAllEvents()),
+    fetchEvents: () => dispatch(fetchEvents()),
     fetchEvent: id => dispatch(fetchEvent(id)),
     receiveEvent: event => dispatch(receiveEvent(event))
   };

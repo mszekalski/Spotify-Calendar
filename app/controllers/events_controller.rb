@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-
+      render :show 
 
     else
       flash.now[:errors] = @event.errors.full_messages

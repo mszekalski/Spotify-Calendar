@@ -11,8 +11,8 @@ class EventForm extends React.Component {
       descritpion: "",
       start_date: this.props.date.toDate(),
       end_date: this.props.date.toDate(),
-      start_time: "12:00",
-      end_time: "13:00"
+      start_time: "",
+      end_time: ""
     };
     this.state = newEvent;
     this.update = this.update.bind(this);

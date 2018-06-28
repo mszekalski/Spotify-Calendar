@@ -12,9 +12,10 @@ export const receiveAllEvents = events => ({
 });
 
 export const receiveEvent = event => {
+  debugger;
   return {
     type: RECEIVE_EVENT,
-    event
+    event: event
   };
 };
 
