@@ -16,6 +16,7 @@ class CalendarArea extends React.Component {
 
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,10 @@ class CalendarArea extends React.Component {
     return <span>{this.state.date.format("MMMM, YYYY")}</span>;
   }
 
+  onDateChange(date) {
+    this.setState({ date });
+  }
+
   renderDays() {
     let numberOfDays = this.state.date.daysInMonth();
     let firstDate = this.state.date.clone().date(1);
@@ -66,7 +71,13 @@ class CalendarArea extends React.Component {
     for (let i = 1; i <= numberOfDays; i++) {
       let date = this.state.date.clone().date(i);
       days.push(
-        <DayContainer month={this.state.month} key={i} number={i} date={date} />
+        <DayContainer
+          onClickChange={this.onDateChange}
+          month={this.state.month}
+          key={i}
+          number={i}
+          date={date}
+        />
       );
     }
 

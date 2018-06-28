@@ -7,6 +7,11 @@ import { connect } from "react-redux";
 class Day extends React.Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onClickChange(this.props.date);
   }
 
   render() {
@@ -18,7 +23,11 @@ class Day extends React.Component {
         return event.start_date === date;
       });
 
-      return <div className="real-dates">{this.props.number}</div>;
+      return (
+        <div className="real-dates" onClick={this.handleChange}>
+          {this.props.number}
+        </div>
+      );
     }
   }
 }
