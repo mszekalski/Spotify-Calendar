@@ -9,12 +9,6 @@ import {
 import { values } from "lodash";
 import moment from "moment";
 
-const mapStateToProps = state => {
-  return {
-    date: state.currentDate
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllEvents: () => dispatch(fetchAllEvents()),

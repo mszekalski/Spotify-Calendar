@@ -10,13 +10,12 @@ class CalendarArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: this.props.currentDate,
+      date: this.props.date,
       month: null
     };
 
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
-    this.handleDateFormChange = this.handleDateFormChange.bind(this);
   }
 
   componentDidMount() {
@@ -40,13 +39,13 @@ class CalendarArea extends React.Component {
   }
 
   nextMonth() {
-    let date = this.state.date;
+    let date = this.state.date.clone();
     date.add(1, "M");
-    this.setState({ date: date, month: date.month() });
+    this.setState({ date, month: date.month() });
   }
 
   prevMonth() {
-    let date = this.state.date;
+    let date = this.state.date.clone();
     date.add(-1, "M");
     this.setState({ date, month: date.month() });
   }
@@ -55,13 +54,9 @@ class CalendarArea extends React.Component {
     return <span>{this.state.date.format("MMMM, YYYY")}</span>;
   }
 
-  handleDateFormChange(date) {
-    this.setState({ date: date });
-  }
-
   renderDays() {
     let numberOfDays = this.state.date.daysInMonth();
-    let firstDate = this.state.date.date(1);
+    let firstDate = this.state.date.clone().date(1);
 
     const days = [];
 
@@ -69,14 +64,9 @@ class CalendarArea extends React.Component {
       days.push(<DayContainer month="null" key={32 + i} />);
     }
     for (let i = 1; i <= numberOfDays; i++) {
+      let date = this.state.date.clone().date(i);
       days.push(
-        <DayContainer
-          month={this.state.month}
-          date={this.state.date.date(i)}
-          key={i}
-          number={i}
-          onDateChange={this.handlDateFormChange}
-        />
+        <DayContainer month={this.state.month} key={i} number={i} date={date} />
       );
     }
 

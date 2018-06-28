@@ -34,7 +34,7 @@ class EventForm extends React.Component {
     return (
       <div className="event-create-form">
         <div className="start-date-container">
-          {this.props.date.format("MM/DD/YYYY")}
+          {this.props.date.format("M/D/YYYY")}
         </div>
         <input
           type="time"

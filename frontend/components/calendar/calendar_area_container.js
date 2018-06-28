@@ -11,7 +11,7 @@ import moment from "moment";
 const mapStateToProps = state => {
   const currentDate = moment();
   return {
-    currentDate: currentDate,
+    date: currentDate,
     events: state.events
   };
 };
