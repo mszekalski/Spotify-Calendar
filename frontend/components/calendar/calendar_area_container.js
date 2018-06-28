@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchAllEvents: () => dispatch(fetchAllEvents()),
     fetchEvent: id => dispatch(fetchEvent(id)),
-    receiveEvent: channel => dispatch(receiveEvent(channel))
+    receiveEvent: event => dispatch(receiveEvent(event))
   };
 };
 
