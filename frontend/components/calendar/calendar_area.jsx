@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import DayContainer from "../day/day_container";
-import EventFormContainer from "../event_form/event_form";
+import EventFormContainer from "../event_form/event_form_container";
 
 class CalendarArea extends React.Component {
   constructor(props) {
@@ -93,8 +93,7 @@ class CalendarArea extends React.Component {
         {this.renderDaysHeader()}
 
         <div className="days-container-inner">{this.renderDays()}</div>
-
-        <EventFormContainer />
+        <EventFormContainer date={this.state.date} />
       </div>
     );
   }

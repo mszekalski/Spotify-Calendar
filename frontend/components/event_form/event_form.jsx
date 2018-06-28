@@ -9,8 +9,8 @@ class EventForm extends React.Component {
     super(props);
     let newEvent = {
       descritpion: "",
-      start_date: this.props.date,
-      end_date: this.props.date,
+      start_date: this.props.date.toDate(),
+      end_date: this.props.date.toDate(),
       start_time: "12:00",
       end_time: "13:00"
     };
@@ -31,7 +31,6 @@ class EventForm extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <div className="event-create-form">
         <div className="start-date-container">
@@ -53,7 +52,7 @@ class EventForm extends React.Component {
         <input
           type="text"
           placeholder="Description"
-          value={this.state.description}
+          value={this.state.description || ""}
           onChange={this.update("description")}
         />
         <button className="submit-button" onClick={this.handleSubmit}>

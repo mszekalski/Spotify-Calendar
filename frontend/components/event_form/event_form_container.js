@@ -9,12 +9,6 @@ import {
 import { values } from "lodash";
 import moment from "moment";
 
-const mapStateToProps = state => {
-  return {
-    date: state.date
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     fetchAllEvents: () => dispatch(fetchAllEvents()),
@@ -25,6 +19,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(EventForm);
