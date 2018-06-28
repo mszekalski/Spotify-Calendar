@@ -3,7 +3,8 @@ import Day from "./day";
 import {
   fetchEvent,
   receiveEvent,
-  fetchAllEvents
+  fetchAllEvents,
+  deleteEvent
 } from "../../actions/event_actions";
 import { values } from "lodash";
 import moment from "moment";
@@ -15,7 +16,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    deleteEvent: eventId => dispatch(deleteEvent(eventId))
+  };
 };
 
 export default connect(
