@@ -9,7 +9,11 @@ import {
 import { values } from "lodash";
 import moment from "moment";
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => {
+  return {
+    date: state.date
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {

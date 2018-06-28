@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import EventFormContainer from "./event_form_container";
 
 class EventForm extends React.Component {
   constructor(props) {
@@ -17,6 +16,7 @@ class EventForm extends React.Component {
     };
     this.state = newEvent;
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
@@ -63,4 +63,5 @@ class EventForm extends React.Component {
     );
   }
 }
+
 export default EventForm;

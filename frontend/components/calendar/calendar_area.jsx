@@ -94,7 +94,7 @@ class CalendarArea extends React.Component {
 
         <div className="days-container-inner">{this.renderDays()}</div>
 
-        <EventFormContainer date={this.state.date} />
+        <EventFormContainer />
       </div>
     );
   }
