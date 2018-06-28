@@ -4,21 +4,7 @@ import { withRouter } from "react-router";
 import { Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import DayContainer from "../day/day_container";
-
-const DAYS = {
-  January: 31,
-  Feburary: 28,
-  March: 31,
-  April: 30,
-  May: 31,
-  June: 30,
-  July: 31,
-  August: 31,
-  September: 30,
-  October: 31,
-  November: 30,
-  December: 31
-};
+import EventFormContainer from "../event_form/event_form";
 
 class CalendarArea extends React.Component {
   constructor(props) {
@@ -27,7 +13,7 @@ class CalendarArea extends React.Component {
       date: this.props.currentDate,
       month: null
     };
-    this.days = DAYS;
+
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
   }
@@ -67,14 +53,13 @@ class CalendarArea extends React.Component {
   }
 
   renderDays() {
-    let daysOfTheWeek = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
-    let numberOfDays = this.days[Object.keys(this.days)[this.state.month]];
+    let numberOfDays = this.state.date.daysInMonth();
     let firstDate = this.state.date.date(1);
-    let firstDay = daysOfTheWeek[firstDate.day()];
+
     const days = [];
 
-    for (let i = 0; i < daysOfTheWeek.indexOf(firstDay); i++) {
-      days.push(<DayContainer month="null" key={i + 100} />);
+    for (let i = 0; i < firstDate.day(); i++) {
+      days.push(<DayContainer month="null" key={32 + i} />);
     }
     for (let i = 1; i <= numberOfDays; i++) {
       days.push(
@@ -108,6 +93,8 @@ class CalendarArea extends React.Component {
         {this.renderDaysHeader()}
 
         <div className="days-container-inner">{this.renderDays()}</div>
+
+        <EventFormContainer date={this.state.date} />
       </div>
     );
   }
